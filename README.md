@@ -1,0 +1,741 @@
+[gis_project_website.html](https://github.com/user-attachments/files/24059851/gis_project_website.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Space Access and Socioeconomic Factors in Newark, NJ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .credit {
+            background-color: #fff;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 3px solid #4a7c2c;
+        }
+        
+        .credit p {
+            margin: 0.25rem 0;
+            color: #666;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            background-color: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #2d5016;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #4a7c2c;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #4a7c2c;
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        h4 {
+            color: #2d5016;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .intro {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .maps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .map-container {
+            text-align: center;
+        }
+        
+        .map-container img {
+            width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .map-container img:hover {
+            transform: scale(1.02);
+        }
+        
+        .map-container h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .map-description {
+            text-align: left;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4a7c2c;
+            margin-top: 1rem;
+        }
+        
+        .interactive-map {
+            margin-top: 2rem;
+        }
+        
+        .interactive-map iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .data-section {
+            background-color: #f9f9f9;
+        }
+        
+        .data-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: white;
+            border-left: 4px solid #4a7c2c;
+            border-radius: 4px;
+        }
+        
+        .data-item ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .data-item li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .methodology {
+            background-color: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        
+        .methodology h4 {
+            color: #2d5016;
+            margin-bottom: 0.75rem;
+        }
+        
+        .key-findings {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .key-findings h3 {
+            color: #1b5e20;
+            margin-top: 0;
+        }
+        
+        .key-findings ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .key-findings li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+        
+        .highlight-box {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box h4 {
+            color: #f57c00;
+            margin-top: 0;
+        }
+        
+        .buffer-explanation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .buffer-card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 2px solid #4a7c2c;
+            text-align: center;
+        }
+        
+        .buffer-card h4 {
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+        }
+        
+        .buffer-card .distance {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4a7c2c;
+            margin: 0.5rem 0;
+        }
+        
+        .buffer-card .time {
+            color: #666;
+            font-style: italic;
+        }
+        
+        footer {
+            background-color: #2d5016;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            margin: 0.25rem 0;
+        }
+        
+        .note {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .note strong {
+            color: #1565c0;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d32f2f;
+        }
+        
+        @media (max-width: 768px) {
+            .maps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .buffer-explanation {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Green Space Access and Socioeconomic Factors</h1>
+        <p>A Network-Based Geospatial Analysis of Newark, New Jersey</p>
+    </header>
+    
+    <div class="credit">
+        <p><strong>Author:</strong> [Ayse Sert Oti]</p>
+        <p><strong>Course:</strong> 34:970:595 Command-Line GIS</p>
+        <p><strong>Date:</strong> December 2025</p>
+    </div>
+    
+    <div class="container">
+        <!-- Introduction Section -->
+        <section>
+            <h2>Project Overview</h2>
+            <div class="intro">
+                <p>This project examines the relationship between green space access and socioeconomic factors in Newark, New Jersey, using network-based accessibility analysis. Access to parks and green spaces is a critical environmental justice issue, as lower-income communities often have less access to these resources despite their importance for physical health, mental wellbeing, and quality of life.</p>
+                
+                <p style="margin-top: 1rem;">Using U.S. Census data and geographic information about New Jersey's parks and conservation lands, this analysis employs walking-distance buffers to evaluate realistic park accessibility. Rather than simply measuring proximity, this study considers whether residents can walk to parks within reasonable timeframes (5, 10, and 20 minutes).</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>Why Network Buffer Analysis?</h4>
+                <p>Traditional proximity analysis can be misleading, especially for large parks. A resident living next to a 200-hectare state forest might technically be "adjacent" to green space, but the actual park facilities (trails, picnic areas, playgrounds) could be 1-2 kilometers away. This analysis uses <strong>park access points (centroids)</strong> to represent realistic entry locations and creates <strong>walking distance buffers</strong> to measure true accessibility.</p>
+            </div>
+            
+            <div class="key-findings">
+                <h3>Key Research Questions</h3>
+                <ul>
+                    <li>How does walking-distance access to green space vary across different neighborhoods in Newark?</li>
+                    <li>What percentage of each census tract falls within 5, 10, or 20-minute walking distance of a park?</li>
+                    <li>Is there a correlation between household income and park accessibility?</li>
+                    <li>Which census tracts have the greatest need for additional green space infrastructure or improved pedestrian access?</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Methodology Section -->
+        <section>
+            <h2>Network Buffer Methodology</h2>
+            <p>This analysis uses three concentric buffer zones from park access points to represent realistic walking distances:</p>
+            
+            <div class="buffer-explanation">
+                <div class="buffer-card">
+                    <h4>Short Walk</h4>
+                    <div class="distance">400m</div>
+                    <div class="time">~5 minute walk</div>
+                    <p style="margin-top: 0.5rem;">Ideal access distance for daily park use, especially for children and elderly residents</p>
+                </div>
+                
+                <div class="buffer-card">
+                    <h4>Medium Walk</h4>
+                    <div class="distance">800m</div>
+                    <div class="time">~10 minute walk</div>
+                    <p style="margin-top: 0.5rem;">Moderate access suitable for regular recreational activities</p>
+                </div>
+                
+                <div class="buffer-card">
+                    <h4>Long Walk</h4>
+                    <div class="distance">1600m</div>
+                    <div class="time">~20 minute walk</div>
+                    <p style="margin-top: 0.5rem;">Maximum reasonable walking distance (~1 mile), typical planning standard</p>
+                </div>
+            </div>
+            
+            <div class="methodology">
+                <h4>Technical Approach</h4>
+                <p><strong>Step 1: Park Access Point Generation</strong></p>
+                <ul>
+                    <li>Large parks (&gt;5 hectares): Centroid points created to represent realistic entry locations</li>
+                    <li>Small parks: Centroids also used for consistency across the analysis</li>
+                    <li>Rationale: Using centroids for large parks provides more accurate walking distance estimates than using park boundaries</li>
+                </ul>
+                
+                <p style="margin-top: 1rem;"><strong>Step 2: Buffer Creation</strong></p>
+                <ul>
+                    <li>Three buffer zones (400m, 800m, 1600m) created from each park access point</li>
+                    <li>Overlapping buffers dissolved to create unified service areas</li>
+                    <li>Analysis performed in NAD83 New Jersey State Plane projection for accurate distance measurements</li>
+                </ul>
+                
+                <p style="margin-top: 1rem;"><strong>Step 3: Census Tract Coverage Analysis</strong></p>
+                <ul>
+                    <li>Spatial intersection of each census tract with buffer zones</li>
+                    <li>Calculated percentage of tract area within each walking distance threshold</li>
+                    <li>Generated binary indicators (tract within/outside buffer zone)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Static Maps Section -->
+        <section>
+            <h2>Static Map Analysis</h2>
+            <p>The following static maps provide a curated overview of the spatial patterns in Newark. These maps were created using GeoPandas and Matplotlib, incorporating census tract boundaries, park polygons, network buffers, and American Community Survey data.</p>
+            
+            <div class="maps-grid">
+                <!-- Map 1 -->
+                <div class="map-container">
+                    <h3>Map 1: Income and Park Accessibility Buffers</h3>
+                    <img src="output/map1_income_park_buffers.png" alt="Median Household Income with Park Buffers">
+                    <div class="map-description">
+                        <p><strong>Description:</strong> This map displays median household income (from ACS 2020 5-Year Estimates) at the census tract level, with park locations and walking-distance buffers overlaid. The color scheme ranges from red (lower income) to yellow to green (higher income).</p>
+                        
+                        <p style="margin-top: 0.75rem;"><strong>Map Elements:</strong></p>
+                        <ul>
+                            <li><strong>Dark green polygons:</strong> Park boundaries</li>
+                            <li><strong>Yellow stars:</strong> Park access points (centroids used for buffer generation)</li>
+                            <li><strong>Green buffer zones:</strong> Walking distance service areas (lightest = 1600m, medium = 800m, darkest = 400m)</li>
+                            <li><strong>Gray areas:</strong> Census tracts with missing income data</li>
+                            <li><strong>Red dashed outlines:</strong> Tracts with coefficient of variation (CV) ≥ 40 (statistical uncertainty)</li>
+                        </ul>
+                        
+                        <p style="margin-top: 0.75rem;"><strong>Key Observations:</strong> The map reveals income disparities across Newark's neighborhoods and shows how walking-distance park access relates to these economic patterns. Areas with lower income but limited buffer coverage may indicate environmental justice concerns.</p>
+                    </div>
+                </div>
+                
+                <!-- Map 2 -->
+                <div class="map-container">
+                    <h3>Map 2: Park Accessibility Coverage</h3>
+                    <img src="output/map2_park_accessibility.png" alt="Park Accessibility Coverage Map">
+                    <div class="map-description">
+                        <p><strong>Description:</strong> This map shows the percentage of each census tract's area that falls within a 400-meter (5-minute) walking distance of a park access point. This is the most stringent accessibility measure, representing ideal access for daily use.</p>
+                        
+                        <p style="margin-top: 0.75rem;"><strong>Color Scheme:</strong></p>
+                        <ul>
+                            <li><strong>Blue/teal shades:</strong> High coverage (75-100% of tract within 400m)</li>
+                            <li><strong>Yellow/orange shades:</strong> Moderate coverage (25-75%)</li>
+                            <li><strong>Red shades:</strong> Low coverage (0-25%)</li>
+                        </ul>
+                        
+                        <p style="margin-top: 0.75rem;"><strong>Key Observations:</strong> This metric was calculated through spatial intersection of the 400m buffer service area with census tract boundaries. Tracts with low percentage coverage, especially when combined with high population density or low income, represent priority areas for park development or improved pedestrian infrastructure.</p>
+                        
+                        <p style="margin-top: 0.75rem;"><strong>Geoprocessing Used:</strong> This map demonstrates results from spatial join operations, buffer analysis, intersection calculations, and area-based normalization—all key GIS techniques required for the final project.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <strong>Note on Map Projection:</strong> All distance calculations were performed using NAD83 / New Jersey State Plane coordinate system (EPSG:32118) to ensure accurate measurements in meters. Maps were then converted to WGS84 for web display.
+            </div>
+        </section>
+        
+        <!-- Interactive Map Section -->
+        <section>
+            <h2>Interactive Web Map</h2>
+            <p>Explore the data yourself using this interactive map created with GeoPandas and Folium. Toggle layers on and off, hover over census tracts for quick information, and click for detailed statistics including walking distance coverage percentages.</p>
+            
+            <div class="highlight-box">
+                <h4>How to Use This Map</h4>
+                <ul>
+                    <li>Use the <strong>layer control</strong> in the top-right corner to toggle different data layers</li>
+                    <li><strong>Hover</strong> over census tracts to see basic information</li>
+                    <li><strong>Click</strong> on census tracts for detailed demographic and accessibility metrics</li>
+                    <li>Toggle between different <strong>basemaps</strong> for better visibility</li>
+                    <li>Explore the <strong>walking distance buffers</strong> to see service areas</li>
+                </ul>
+            </div>
+            
+            <div class="interactive-map">
+                <iframe src="output/interactive_map.html" title="Interactive Green Space Access Map"></iframe>
+            </div>
+            
+            <div style="margin-top: 1.5rem;">
+                <h3>Interactive Map Features</h3>
+                <ul>
+                    <li><strong>Multiple Basemaps:</strong> OpenStreetMap, CartoDB Light, and CartoDB Dark options for different visualization preferences</li>
+                    <li><strong>Income Choropleth Layer:</strong> Color-coded census tracts by median household income (shown by default)</li>
+                    <li><strong>Park Accessibility Layer:</strong> Alternative choropleth showing percentage of tract within 400m of parks (toggle on/off)</li>
+                    <li><strong>Walking Distance Buffers:</strong> Three concentric buffer zones (400m, 800m, 1600m) showing service areas</li>
+                    <li><strong>Parks Layer:</strong> All park polygons with identifying tooltips</li>
+                    <li><strong>Park Access Points:</strong> Yellow circles marking centroids used for buffer generation</li>
+                    <li><strong>Detailed Popups:</strong> Click any tract to see income, population, density, park area, distance to nearest park, and walking distance coverage percentages</li>
+                    <li><strong>Layer Control:</strong> Full control over layer visibility for custom analysis</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Data Sources Section -->
+        <section class="data-section">
+            <h2>Data Sources and Documentation</h2>
+            <p>This section provides comprehensive documentation of all datasets used in this analysis, addressing the required questions about data sources, preparation, processing, and quality issues.</p>
+            
+            <div class="data-item">
+                <h4>1. New Jersey Park and Conservation Lands (Polygons)</h4>
+                <ul>
+                    <li><strong>Where did I find them?</strong> NJ Office of GIS (NJGIN) Open Data Portal at <a href="https://njogis-newjersey.opendata.arcgis.com/datasets/parks/explore" target="_blank">this link</a></li>
+                    <li><strong>Who prepared them?</strong> New Jersey Office of Information Technology, Office of GIS</li>
+                    <li><strong>How recently updated?</strong> Check metadata at source link; typically updated quarterly or annually</li>
+                    <li><strong>Original format?</strong> Shapefile and GeoJSON formats available</li>
+                    <li><strong>Processing applied:</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Clipped to Newark municipal boundaries using spatial intersection (<code>gpd.clip()</code>)</li>
+                            <li>Reprojected to NAD83 NJ State Plane (EPSG:32118) for accurate distance calculations</li>
+                            <li>Generated centroid access points for network buffer analysis</li>
+                            <li>Classified parks as "large" (&gt;5 hectares) or "small" based on area calculations</li>
+                        </ul>
+                    </li>
+                    <li><strong>Data quality issues:</strong> None significant; dataset is well-maintained and regularly updated by state GIS office</li>
+                </ul>
+            </div>
+            
+            <div class="data-item">
+                <h4>2. American Community Survey Data (2020 5-Year Estimates) - Tabular</h4>
+                <ul>
+                    <li><strong>Where did I find them?</strong> U.S. Census Bureau at <a href="https://data.census.gov" target="_blank">data.census.gov</a></li>
+                    <li><strong>Who prepared them?</strong> U.S. Census Bureau</li>
+                    <li><strong>How recently updated?</strong> 2020 5-Year Estimates (2016-2020 data); annual releases available</li>
+                    <li><strong>Original format?</strong> CSV (comma-separated values) tabular data</li>
+                    <li><strong>Variables used:</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li><code>B19013_001E</code> - Median Household Income</li>
+                            <li><code>B01003_001E</code> - Total Population</li>
+                            <li><code>B25014_005E, B25014_006E, B25014_007E</code> - Housing unit crowding indicators (occupied units with 1.01+ occupants per room)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Processing to make mappable:</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li><strong>Table join</strong> to census tract geometries by GEOID field</li>
+                            <li>Cleaned GEOID format (removed "1400000US" prefix)</li>
+                            <li>Calculated derived variables: population density (population ÷ tract area), crowding index (sum of three crowding variables)</li>
+                            <li>Converted Census missing data codes (-666666666) to NaN for proper handling in analysis</li>
+                        </ul>
+                    </li>
+                    <li><strong>Data quality issues addressed:</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li><strong>Missing data:</strong> Tracts with suppressed data (small populations or high margins of error) converted to NaN and symbolized in light gray on maps</li>
+                            <li><strong>High coefficient of variation:</strong> Tracts where CV ≥ 40 for median income flagged with red dashed outlines to indicate statistical uncertainty</li>
+                            <li><strong>Zero population tracts:</strong> Industrial or uninhabited tracts excluded from per-capita calculations to avoid division by zero errors</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="data-item">
+                <h4>3. Municipal Boundaries (Polygons)</h4>
+                <ul>
+                    <li><strong>Where did I find them?</strong> NJ Office of GIS (NJGIN) at <a href="https://njogis-newjersey.opendata.arcgis.com/datasets/municipalities/explore" target="_blank">this link</a></li>
+                    <li><strong>Who prepared them?</strong> New Jersey Office of Information Technology</li>
+                    <li><strong>How recently updated?</strong> Maintained and updated as municipal boundaries change</li>
+                    <li><strong>Original format?</strong> Shapefile/GeoJSON</li>
+                    <li><strong>Processing applied:</strong> Filtered to Newark municipality using attribute query; used as clip boundary for all other spatial layers</li>
+                    <li><strong>Data quality issues:</strong> None; authoritative source for NJ municipal boundaries</li>
+                </ul>
+            </div>
+            
+            <div class="data-item">
+                <h4>4. Census Tract Boundaries (Polygons) - TIGER/Line</h4>
+                <ul>
+                    <li><strong>Where did I find them?</strong> U.S. Census Bureau TIGER/Line Shapefiles at <a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html" target="_blank">this link</a></li>
+                    <li><strong>Who prepared them?</strong> U.S. Census Bureau Geography Division</li>
+                    <li><strong>How recently updated?</strong> Annual releases; using 2020 boundaries to match ACS data vintage</li>
+                    <li><strong>Original format?</strong> Shapefile</li>
+                    <li><strong>Processing applied:</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Clipped to Newark study area using municipal boundary</li>
+                            <li>Served as base geography for joining ACS tabular data</li>
+                            <li>Calculated area in square kilometers for density metrics</li>
+                            <li>Generated centroids for distance-to-park calculations</li>
+                        </ul>
+                    </li>
+                    <li><strong>Data quality issues:</strong> None; TIGER/Line files are the official Census geographic boundaries</li>
+                </ul>
+            </div>
+            
+            <div class="methodology">
+                <h4>Geoprocessing Techniques Demonstrated</h4>
+                <p>This project incorporates multiple spatial analysis techniques required for the final project:</p>
+                
+                <p style="margin-top: 1rem;"><strong>1. Table Join (ACS data to census tracts)</strong></p>
+                <p>Joined tabular ACS data to spatial census tract geometries using the GEOID field as the key. This is essential for mapping demographic variables.</p>
+                
+                <p style="margin-top: 1rem;"><strong>2. Spatial Join (Parks to census tracts)</strong></p>
+                <p>Used <code>gpd.sjoin()</code> with 'intersects' predicate to identify which parks fall within or overlap each census tract boundary.</p>
+                
+                <p style="margin-top: 1rem;"><strong>3. Buffer Analysis (Network accessibility)</strong></p>
+                <p>Created three buffer zones (400m, 800m, 1600m) from park access points using <code>.buffer()</code> method to represent walking distances.</p>
+                
+                <p style="margin-top: 1rem;"><strong>4. Dissolve Operation</strong></p>
+                <p>Dissolved overlapping buffers using <code>.dissolve()</code> to create unified service areas, eliminating double-counting where buffer zones overlap.</p>
+                
+                <p style="margin-top: 1rem;"><strong>5. Spatial Intersection</strong></p>
+                <p>Calculated intersection of buffer zones with census tracts to determine percentage coverage using <code>.intersection()</code> and area calculations.</p>
+                
+                <p style="margin-top: 1rem;"><strong>6. Clip Operation</strong></p>
+                <p>Clipped parks and census tracts to study area boundary using <code>gpd.clip()</code> to focus analysis on Newark.</p>
+                
+                <p style="margin-top: 1rem;"><strong>7. Centroid Generation</strong></p>
+                <p>Generated centroids for both parks (as access points) and census tracts (for distance calculations) using <code>.centroid</code> property.</p>
+                
+                <p style="margin-top: 1rem;"><strong>8. Distance Calculation</strong></p>
+                <p>Computed distances from tract centroids to nearest park access point using <code>.distance()</code> method.</p>
+                
+                <p style="margin-top: 1rem;"><strong>9. Area Calculation</strong></p>
+                <p>Calculated areas of tracts and parks in square meters/kilometers using <code>.area</code> property in projected coordinate system.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>Why Use Park Centroids for Buffer Analysis?</h4>
+                <p>A key methodological decision in this project was using park centroids as access points for large parks (&gt;5 hectares) rather than buffering from park boundaries.</p>
+                
+                <p style="margin-top: 0.75rem;"><strong>The Problem:</strong> When a park is very large (e.g., a 200-hectare state forest), residents living at the edge of the park polygon might technically be "adjacent" to green space, but the actual park amenities—parking lots, trail heads, playgrounds, picnic areas—could be 1-2 kilometers away at the park's interior.</p>
+                
+                <p style="margin-top: 0.75rem;"><strong>The Solution:</strong> By using park centroids as access points, we model the distance to the park's usable features more realistically. For small neighborhood parks, this distinction is less important, but for large parks it prevents overestimating accessibility.</p>
+                
+                <p style="margin-top: 0.75rem;"><strong>Technical Implementation:</strong> Parks larger than 50,000 square meters (5 hectares) were classified as "large parks" and their geometric centroids were calculated as access points. Buffers were then generated from these centroid points rather than from park boundaries.</p>
+            </div>
+        </section>
+        
+        <!-- Findings Section -->
+        <section>
+            <h2>Findings and Implications</h2>
+            <p>This network-based geospatial analysis reveals important patterns in the relationship between socioeconomic factors and green space accessibility in Newark. The combination of walking-distance buffers, coverage percentage calculations, and demographic data provides a nuanced understanding of environmental justice issues related to park access.</p>
+            
+            <div class="key-findings" style="margin-top: 1.5rem;">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Walking distance matters:</strong> Network buffer analysis provides more realistic accessibility measures than simple proximity, especially for large parks where usable amenities may be far from park boundaries</li>
+                    <li><strong>Service area coverage varies significantly:</strong> The percentage of tract area within 400m of parks ranges widely, revealing spatial inequities in ideal park access</li>
+                    <li><strong>Multiple distance thresholds tell different stories:</strong> While many areas may be within 20-minute walking distance (1600m), far fewer enjoy 5-minute access (400m) ideal for daily use</li>
+                    <li><strong>Centroid-based analysis improves accuracy:</strong> Using park centroids as access points for large parks prevents overestimating accessibility for edge residents</li>
+                    <li><strong>Environmental justice implications:</strong> Overlaying income data with accessibility buffers can identify disadvantaged neighborhoods with limited park access</li>
+                    <li><strong>Interactive mapping enables exploration:</strong> Stakeholders can investigate specific neighborhoods and identify priority areas for intervention</li>
+                </ul>
+            </div>
+            
+            <h3>Spatial Patterns Observed</h3>
+            <p>The analysis reveals several important spatial patterns:</p>
+            <ul>
+                <li><strong>Buffer overlap zones:</strong> Areas served by multiple parks show darker, more intense buffer coverage, indicating redundant access that may be appropriate for high-density areas</li>
+                <li><strong>Access gaps:</strong> Census tracts with 0% coverage within 400m buffers represent clear gaps in the park network, especially concerning if they also show high population density or low income</li>
+                <li><strong>Edge effects:</strong> Tracts at the municipal boundary may show lower apparent access if parks in adjacent municipalities aren't included in the analysis</li>
+                <li><strong>Large park challenges:</strong> Very large parks (forests, reservations) create extensive buffer zones, but actual accessibility depends on entry points, parking, and trail access</li>
+            </ul>
+            
+            <h3>Methodological Advantages</h3>
+            <p>This project demonstrates several advantages of network-based accessibility analysis over simpler methods:</p>
+            
+            <div class="methodology">
+                <h4>Comparison of Approaches</h4>
+                <p><strong>Simple proximity (distance to nearest park boundary):</strong></p>
+                <ul>
+                    <li>✗ Overestimates access to large parks</li>
+                    <li>✗ Doesn't account for actual walking distances</li>
+                    <li>✗ Binary measure (near/far) doesn't capture gradations</li>
+                </ul>
+                
+                <p style="margin-top: 1rem;"><strong>Centroid-based buffer analysis (this project):</strong></p>
+                <ul>
+                    <li>✓ Realistic access points for large parks</li>
+                    <li>✓ Multiple distance thresholds (5, 10, 20 min walks)</li>
+                    <li>✓ Percentage coverage shows partial accessibility</li>
+                    <li>✓ Dissolved buffers create service areas</li>
+                    <li>✓ Comparable across different park sizes</li>
+                </ul>
+                
+                <p style="margin-top: 1rem;"><strong>Future enhancements could include:</strong></p>
+                <ul>
+                    <li>Network analysis using actual street networks (e.g., NetworkX, OSMnx)</li>
+                    <li>Accounting for topography and barriers (highways, rivers)</li>
+                    <li>Multiple access points per park for very large parks</li>
+                    <li>Weighting by park amenities and quality</li>
+                </ul>
+            </div>
+            
+            <h3>Policy and Planning Implications</h3>
+            <p>This analysis can inform evidence-based urban planning and environmental justice initiatives:</p>
+            <ul>
+                <li><strong>Park development priorities:</strong> Tracts with low buffer coverage and high population density are candidates for new park development</li>
+                <li><strong>Infrastructure improvements:</strong> Areas just outside buffer zones might benefit from improved pedestrian infrastructure (sidewalks, crosswalks, traffic calming) to enhance access to existing parks</li>
+                <li><strong>Equity assessment:</strong> Comparing accessibility metrics across income levels can reveal environmental justice disparities</li>
+                <li><strong>Service standards:</strong> The 400m/5-minute walk threshold aligns with urban planning best practices for neighborhood parks</li>
+                <li><strong>Resource allocation:</strong> Understanding spatial gaps helps prioritize limited public investment in green space</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Replicability:</strong> This methodology can be applied to any city or region with park and census data. The Python script is fully documented and can be adapted by changing the study area, buffer distances, or census variables of interest.
+            </div>
+            
+            <h3>Limitations and Future Directions</h3>
+            <p>While this analysis provides valuable insights, several limitations should be noted:</p>
+            <ul>
+                <li><strong>Euclidean vs. network distance:</strong> Buffers represent straight-line distances, not actual walking routes along streets. True network analysis would require street network data.</li>
+                <li><strong>Barriers not modeled:</strong> Highways, rivers, rail lines, and other barriers to pedestrian movement aren't explicitly considered.</li>
+                <li><strong>Park quality not assessed:</strong> All parks are treated equally, but amenities, maintenance, and safety vary significantly.</li>
+                <li><strong>Single access points:</strong> Very large parks may have multiple entrances; using only centroids may underestimate access in some cases.</li>
+                <li><strong>Temporal considerations:</strong> Park hours, seasonal access, and safety perceptions that vary by time of day aren't captured.</li>
+            </ul>
+            
+            <p style="margin-top: 1rem;">Future research could address these limitations by incorporating street network analysis, barrier modeling, park quality assessments, and community perception surveys.</p>
+        </section>
+        
+        <!-- Technical Notes Section -->
+        <section>
+            <h2>Technical Implementation Notes</h2>
+            <p>For students and researchers interested in replicating this analysis:</p>
+            
+            <div class="data-item">
+                <h4>Software and Libraries Used</h4>
+                <ul>
+                    <li><strong>Python 3.x</strong> - Primary programming language</li>
+                    <li><strong>GeoPandas</strong> - Spatial data manipulation and analysis</li>
+                    <li><strong>Pandas</strong> - Tabular data processing</li>
+                    <li><strong>Matplotlib</strong> - Static map creation</li>
+                    <li><strong>Folium</strong> - Interactive web map generation</li>
+                    <li><strong>Shapely</strong> - Geometric operations</li>
+                    <li><strong>NumPy</strong> - Numerical computations</li>
+                </ul>
+            </div>
+            
+            <div class="data-item">
+                <h4>Key Code Snippets</h4>
+                <p><strong>Creating park access points for large parks:</strong></p>
+                <code style="display: block; padding: 0.5rem; background: #f5f5f5;">
+parks_access['is_large_park'] = parks_access['park_area_sqm'] > 50000<br>
+park_points_gdf['geometry'] = park_points_gdf.geometry.centroid
+                </code>
+                
+                <p style="margin-top: 1rem;"><strong>Generating buffers:</strong></p>
+                <code style="display: block; padding: 0.5rem; background: #f5f5f5;">
+park_buffers_short['geometry'] = park_points_gdf.geometry.buffer(400)<br>
+service_area_short = park_buffers_short.dissolve().geometry.iloc[0]
+                </code>
+                
+                <p style="margin-top: 1rem;"><strong>Calculating percentage coverage:</strong></p>
+                <code style="display: block; padding: 0.5rem; background: #f5f5f5;">
+intersection = service_area.intersection(tract.geometry)<br>
+pct_coverage = (intersection.area / tract.geometry.area) * 100
+                </code>
+            </div>
+            
+            <div class="note">
+                <strong>Coordinate Reference System:</strong> All distance-based calculations were performed in NAD83 / New Jersey State Plane (EPSG:32118), a projected coordinate system with meters as units. Data was then converted to WGS84 (EPSG:4326) for web mapping with Folium.
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 | Created for 34:970:595 Command-Line GIS Final Project</p>
+        <p>Rutgers University | [Your Name]</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Analysis conducted using Python, GeoPandas, and Folium</p>
+    </footer>
+</body>
+</html>
